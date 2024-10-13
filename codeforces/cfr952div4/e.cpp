@@ -29,46 +29,25 @@ T minV(T a){
 
 template<typename T, typename ... Args>
 T minV(T a , Args... arg){
-    T b = minVariadic(arg...);
+    T b = minV(arg...);
     return min(a,b);
 }
 
 
-int n,h;
-
-
-bool go(vector<int> &a , vector<int> &c , ll k){
-    ll current = 0;
-    for(int i = 0 ; i < n ; i++){
-        ll t = (k - 1)/c[i];
-        current += (t+1)*a[i];
-        if( current >= h) return true;
-    }
-    return false;
-}
-
 
 signed slv(){ 
-    scanf("%d %d",&h,&n);
-    vector<int> a(n),c(n);
-    for(int i = 0 ; i < n ; i++) scanf("%d",&a[i]);
-    for(int i = 0 ; i < n ; i++) scanf("%d",&c[i]);
-    ll l = 1 , r = 2e13;
+    int x,y,z; ll k;
+    scanf("%d %d %d %lld",&x,&y,&z,&k);
     ll ans = 0;
-    while(l <= r){
-        ll mid = l + (r-l)/2;
-        if( go(a,c,mid)){
-           ans = mid; 
-           r = mid - 1;
-        }
-        else{
-           l = mid + 1;
+    for(int i = 1 ; i <= x ; i++){
+        for(int j = 1 ; j <= y ; j++){
+            if(k %(i*j) == 0){
+                ll t = k/(i*j);
+                ans = max(ans , (x-i+1)*(y-j+1)*(z-t+1) );
+            }
         }
     }
-    // printf("%d\n",go(a,c,1));
-
     printf("%lld\n",ans);
-
     return 0;
 }
      
