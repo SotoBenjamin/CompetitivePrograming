@@ -1,45 +1,43 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 #define sz(x) (int)x.size()
 #define fi first
 #define se second
 #define DBG(x) cout << #x << " = " << x << '\n';
 #define DBGS(x) cout << #x << " = " << x << ", ";
+#define all(x) x.begin() , x.end()
 using namespace std;
- 
+     
 typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pii;
 typedef pair<ll,ll> pll;
-typedef tuple<int,int,int> ti;
- 
+     
 const ll mod = 1e9+7;
- 
+     
 int nxt() {
     int x; cin >> x;
     return x;
 }
- 
+     
 const int inf = INT_MAX;
- 
- 
-        
+     
+     
+     
 signed slv() {
-    int l,r; cin>>l>>r;
-    int ans = 0;
-    for(int i=l;i<=r;i++){
-        if(i%2==1) ans++;
+    string s; cin>>s;
+    reverse(all(s));
+    string s1 = s.substr(0,3);
+    if( s1 == "nas"){
+        cout<<"Yes"<<"\n";
+        return 0;
     }
 
-    cout<<(ans/2)<<"\n";
-
+    cout<<"No"<<"\n";
     return 0;
-     
 }
- 
-signed main() {
-    ios::sync_with_stdio(0); cin.tie(0);
-    int t=1;
-    cin>>t;
-    while (t--) slv();
+     
+signed main(){
+    int t = 1; //cin>>t;
+    while(t--) slv();
     return 0;
 }

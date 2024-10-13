@@ -23,18 +23,22 @@ const int inf = INT_MAX;
      
      
 signed slv() {
-    int n; cin>>n;
-    vector<int> v(n);
-    for(int i = 0 ; i < n ; i++) cin>>v[i];
-    sort(all(v));
-    ll ans = (v[0]+v[1])/2;
-    for(int i = 2 ; i < n ; i++) ans = (ans+v[i])/2;
-    cout<<ans<<"\n";
+    int n; scanf("%d",&n);
+    vector<ll> v(n);
+    for(int i = 0 ; i < n ; i++) scanf("%lld",&v[i]);
+    ll s=0;
+    ll t = -1;
+    for(int i = 0 ; i < n ; i++) {s+=v[i]; t = max(t,v[i]);} 
+    if( s%2 == 0 && 2*t <= s){
+        printf("YES\n");
+        return 0;
+    }
+    printf("NO\n");
     return 0;
 }
      
 signed main(){
-    int t = 1; cin>>t;
+    int t = 1; //cin>>t;
     while(t--) slv();
     return 0;
 }

@@ -22,19 +22,32 @@ int nxt() {
 const int inf = INT_MAX;
      
      
+     
 signed slv() {
-    int n; cin>>n;
-    vector<int> v(n);
-    for(int i = 0 ; i < n ; i++) cin>>v[i];
-    sort(all(v));
-    ll ans = (v[0]+v[1])/2;
-    for(int i = 2 ; i < n ; i++) ans = (ans+v[i])/2;
-    cout<<ans<<"\n";
+    string s,t;
+    cin>>s>>t;
+    int n = min(sz(s),sz(t));
+    for(int i = 0 ; i < n ; i++){
+        if( s[i] != t[i] ){
+            cout<<(i+1)<<"\n";
+            return 0;
+        }
+    }
+
+    if( sz(s) == sz(t)){
+        cout<<0<<"\n";
+        return 0;
+    }
+
+    
+
+    cout<<(n+1)<<"\n";
+
     return 0;
 }
      
 signed main(){
-    int t = 1; cin>>t;
+    int t = 1; //cin>>t;
     while(t--) slv();
     return 0;
 }

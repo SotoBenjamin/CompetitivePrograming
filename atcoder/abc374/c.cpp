@@ -19,22 +19,39 @@ int nxt() {
     return x;
 }
      
-const int inf = INT_MAX;
-     
-     
+const ll inf = INT64_MAX;
+int n;     
+ll s = 0;     
+vector<ll> v(20);     
+
+ll ans = inf;
+ll s_c = 0;
+void f(int i){
+    if(i == n){
+        ans = min(ans, max(s_c,s - s_c));
+        return;
+    }
+    s_c += v[i];
+    f(i+1);
+    s_c -= v[i];
+    f(i+1);
+}
+
 signed slv() {
-    int n; cin>>n;
-    vector<int> v(n);
-    for(int i = 0 ; i < n ; i++) cin>>v[i];
-    sort(all(v));
-    ll ans = (v[0]+v[1])/2;
-    for(int i = 2 ; i < n ; i++) ans = (ans+v[i])/2;
+    cin>>n;
+    for(int i = 0 ; i < n ; i++){
+        ll item; cin>>item;
+        s += item;
+        v[i] = item;
+    }
+    f(0);
     cout<<ans<<"\n";
+
     return 0;
 }
      
 signed main(){
-    int t = 1; cin>>t;
+    int t = 1; //cin>>t;
     while(t--) slv();
     return 0;
 }

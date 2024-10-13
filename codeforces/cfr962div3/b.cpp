@@ -6,7 +6,7 @@
 #define DBGS(x) cout << #x << " = " << x << ", ";
 #define all(x) x.begin() , x.end()
 using namespace std;
-     
+
 typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pii;
@@ -20,16 +20,40 @@ int nxt() {
 }
      
 const int inf = INT_MAX;
-     
-     
-signed slv() {
-    int n; cin>>n;
-    vector<int> v(n);
-    for(int i = 0 ; i < n ; i++) cin>>v[i];
-    sort(all(v));
-    ll ans = (v[0]+v[1])/2;
-    for(int i = 2 ; i < n ; i++) ans = (ans+v[i])/2;
-    cout<<ans<<"\n";
+
+
+template<typename T>
+T minV(T a){
+    return a;
+}
+
+template<typename T, typename ... Args>
+T minV(T a , Args... arg){
+    T b = minVariadic(arg...);
+    return min(a,b);
+}
+
+
+int n,k;
+
+signed slv(){ 
+    cin>>n>>k;
+    vector<vector<char>> g(n,vector<char>(n));
+    for (int i = 0; i < n; i++){
+        for(int j = 0 ; j < n ; j++){
+            cin>>g[i][j];
+        }
+    }
+    
+    
+
+    for(int i = 0 ; i < n ; i+=k){
+        for(int j = 0 ; j < n ; j+=k){
+            cout<<g[i][j];
+        }
+        cout<<"\n";
+    }
+
     return 0;
 }
      
