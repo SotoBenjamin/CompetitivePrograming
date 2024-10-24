@@ -1,57 +1,48 @@
 #include <bits/stdc++.h>
-#define sz(x) (int)x.size()
-#define fi first
-#define se second
-#define DBG(x) cout << #x << " = " << x << '\n';
-#define DBGS(x) cout << #x << " = " << x << ", ";
-#define all(x) x.begin() , x.end()
 using namespace std;
-     
-typedef long long ll;
-typedef long double ld;
-typedef pair<int,int> pii;
-typedef pair<ll,ll> pll;
-     
+#define ll long long int
+#define cpu() ios::sync_with_stdio(false);cin.tie(nullptr);
+ 
 const ll mod = 1e9+7;
-     
-int nxt() {
-    int x; cin >> x;
-    return x;
-}
-     
-const ll inf = INT64_MAX;
-int n;     
-ll s = 0;     
-vector<ll> v(20);     
-
+const ll inf = INT64_MAX;   
+const ll ninf = INT64_MIN;
+const int MAX = 2e5; 
 ll ans = inf;
-ll s_c = 0;
-void f(int i){
-    if(i == n){
-        ans = min(ans, max(s_c,s - s_c));
+ll s = 0;
+void f(int idx , int n , vector<ll>& v , ll sum_act){
+    if( idx == n){
+        ans = min(ans , max(s-sum_act,sum_act));
         return;
     }
-    s_c += v[i];
-    f(i+1);
-    s_c -= v[i];
-    f(i+1);
+ 
+    sum_act += v[idx];
+    f(idx + 1 , n , v , sum_act);
+    sum_act -= v[idx];
+    f(idx + 1 , n , v , sum_act );
 }
-
-signed slv() {
-    cin>>n;
+ 
+void solve(){
+    int n; cin>>n;
+    vector<ll> v(n);
+    
     for(int i = 0 ; i < n ; i++){
-        ll item; cin>>item;
-        s += item;
-        v[i] = item;
+        cin>>v[i];
+        s += v[i];
     }
-    f(0);
-    cout<<ans<<"\n";
-
-    return 0;
+ 
+    f(0 , n , v, 0);
+ 
+    cout<<ans<<"\n";   
 }
-     
-signed main(){
-    int t = 1; //cin>>t;
-    while(t--) slv();
+ 
+int main(){
+    cpu();
+    int t = 1; 
+    //cin>>t;
+ 
+ 
+    solve();
+        
+ 
     return 0;
 }
