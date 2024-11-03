@@ -11,7 +11,9 @@ typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pii;
 typedef pair<ll,ll> pll;
-     
+
+
+
 const ll mod = 1e9+7;
      
 int nxt() {
