@@ -13,16 +13,7 @@ typedef long double ld;
 typedef pair<int,int> pii;
 typedef pair<ll,ll> pll;
      
-const ll mod = 1e9+7;
-     
-int nxt() {
-    int x; cin >> x;
-    return x;
-}
-     
-const int inf = INT_MAX;
-
-
+    
 template<typename T>
 T minV(T a){
     return a;
@@ -38,6 +29,8 @@ void setIO(string s) {
 	freopen((s + ".in").c_str(), "r", stdin);
 	freopen((s + ".out").c_str(), "w", stdout);
 }
+
+
 
 signed slv(){ 
     //setIO("a");

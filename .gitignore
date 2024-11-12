@@ -20,3 +20,12 @@
 *.pyd
 *.[^/]*[^.]
 *.
+# Archivos sin extensión conformados solo por caracteres alfanuméricos
+*[a-zA-Z0-9]
+
+# Archivos con extensión .dSYM
+*.dSYM/
+
+# Archivos con extensión .in y .out
+*.in
+*.out
