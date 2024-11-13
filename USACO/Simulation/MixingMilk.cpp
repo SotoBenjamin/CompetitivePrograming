@@ -44,7 +44,6 @@ void slv(){
      
 int main(){
 	freopen("mixmilk.in", "r" ,stdin);
-	freopen("mixmilk.out", "w", stdout);
 
     int t = 1; //cin>>t;
     while(t--) slv();
