@@ -36,7 +36,14 @@ T minV(T a , Args... arg){
 
 
 signed slv(){ 
-    ll n,a,b; cin>>n>>a>>b;
+    ll n,b,c; cin>>n>>b>>c;
+    if(b == 0) {
+        cout<<-1<<"\n";
+        return 0;
+    }
+
+    ll i = (n-c)/b + 1;
+    
     
     return 0;
 }
