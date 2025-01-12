@@ -1,4 +1,7 @@
+#include <algorithm>
 #include <bits/stdc++.h>
+#include <cstdint>
+#include <vector>
 #define sz(x) (int)x.size()
 #define fi first
 #define se second
@@ -11,6 +14,10 @@ typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pii;
 typedef pair<ll,ll> pll;
+typedef vector<int> vi;
+typedef vector<pair<int,int>> vpii;
+typedef vector<ll> vl;
+typedef vector<pair<ll,ll>> vpll;
      
 const ll mod = 1e9+7;
      
@@ -32,47 +39,18 @@ T minV(T a , Args... arg){
     T b = minVariadic(arg...);
     return min(a,b);
 }
- 
-int n,m,k;
-ll t;
-
-const int N = 1e6;
-
-ll a[N];
-
-bool go(ll k){
-    ll s  = 0;
-    for(int i = 0 ; i < n ; i++){
-        s += k/a[i];
-        if( s >= t){
-            return true;
-        }
+int n;
+void slv(){
+    set<int> s;
+    for(int i = 0 ; i < n ; i++) {
+        int item; cin>>item;
+        s.insert(item);
     }
-    return false;
-}
-
-
-void slv(){ 
-    cin>>n>>t;
-    ll l = 1 , r = 1e18;
-    for(int i = 0 ; i < n ; i++) cin>>a[i];
-    ll ans;
-    while( l <= r){
-        ll mid = l + (r-l)/2;
-        if( go(mid)){
-            ans = mid;
-            r = mid - 1;
-        }
-        else{
-            l = mid +1;
-        }
-    }
-
-    cout<<ans<<"\n";
-}
+    cout<<sz(s)<<"\n";
+}   
      
 int main(){
-    int t = 1; //cin>>t;
-    while(t--) slv();
+    //freopen("DistinctNumbers.in","r" ,stdin);
+    while(cin>>n) slv();
     return 0;
 }
