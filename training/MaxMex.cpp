@@ -35,33 +35,39 @@ T minV(T a , Args... arg){
     T b = minVariadic(arg...);
     return min(a,b);
 }
-int n,m,k;
-ll x;
-
+int t;
+int n;
 
 void slv(){
-    cin>>m;
-    multiset<int> s;
-    for(int i = 0 ; i < n ; i++) {
-        int item; cin>>item;
-        s.insert(item);
+    ll x;
+    cin>>n>>x;
+    vl a(n);
+    for(ll& i : a) cin>>i;
+    sort(all(a));
+    ll mex = a[0];
+    if ( mex != 0){
+        cout<<mex<<"\n";
+        return;
     }
-    while(m--){
-        int target ; cin>>target;
-        if( sz(s) == 0 ){
-            cout<<-1<<"\n";
-            continue;
+    map<ll,int> mp;
+    int j = -1;
+    for(int i = 1 ; i < n ; i++){
+        if(a[i] == a[i-1]){
+            mp[a[i] % x]++;
+            continue;   
         }
-        auto it = s.upper_bound(target);
-        if(it == s.begin()){
-            cout<<-1<<"\n";
-            continue;
+
+        if( a[i] != mex+1){
+            j = i;
+            break;
         }
-        --it;
-        int ans = *it;
-        s.erase(it);
-        cout<<ans<<"\n";
+
+        mex++;
+        DBG(mex);
     }
+    cout<<mex<<"\n";
+
+
 }   
      
 int main(){
@@ -71,8 +77,8 @@ int main(){
     freopen("output.txt","w",stdout);
     #endif
 
-
-
-    while(cin>>n) slv();
+    cin>>t;
+    while(t--) slv();
+    
     return 0;
 }

@@ -40,28 +40,23 @@ ll x;
 
 
 void slv(){
-    cin>>m;
-    multiset<int> s;
-    for(int i = 0 ; i < n ; i++) {
-        int item; cin>>item;
-        s.insert(item);
-    }
-    while(m--){
-        int target ; cin>>target;
-        if( sz(s) == 0 ){
-            cout<<-1<<"\n";
-            continue;
+    vpii a(n);
+    for(auto&p : a) cin>>p.fi>>p.se;
+    sort(all(a),[&](auto& x, auto& y){
+        if (x.se != y.se){
+            return x.se < y.se;
         }
-        auto it = s.upper_bound(target);
-        if(it == s.begin()){
-            cout<<-1<<"\n";
-            continue;
+        return x.fi < y.fi;
+    });
+    ll ans = 1;
+    int limit = a[0].se;
+    for(int i = 1 ; i < n ; i++){
+        if(a[i].fi >= limit){
+            ans++;
+            limit = a[i].se;
         }
-        --it;
-        int ans = *it;
-        s.erase(it);
-        cout<<ans<<"\n";
     }
+    cout<<ans<<"\n";
 }   
      
 int main(){
@@ -70,7 +65,6 @@ int main(){
     freopen("input.txt","r",stdin);    
     freopen("output.txt","w",stdout);
     #endif
-
 
 
     while(cin>>n) slv();

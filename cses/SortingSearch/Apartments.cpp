@@ -35,7 +35,10 @@ T minV(T a , Args... arg){
     T b = minVariadic(arg...);
     return min(a,b);
 }
+
 int n,m,k;
+
+
 void slv(){
     cin>>m>>k;
     vi a(n);

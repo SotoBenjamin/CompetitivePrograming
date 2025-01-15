@@ -35,33 +35,36 @@ T minV(T a , Args... arg){
     T b = minVariadic(arg...);
     return min(a,b);
 }
-int n,m,k;
-ll x;
+int t;
 
 
 void slv(){
-    cin>>m;
-    multiset<int> s;
-    for(int i = 0 ; i < n ; i++) {
-        int item; cin>>item;
-        s.insert(item);
+    ll n,b,c;
+    cin>>n>>b>>c;
+
+    if ( n < c){
+        cout<<n<<"\n";
+        return;
     }
-    while(m--){
-        int target ; cin>>target;
-        if( sz(s) == 0 ){
-            cout<<-1<<"\n";
-            continue;
+
+
+    if( b == 0){
+
+        if ( c >= n){
+            cout<<n<<"\n";
+            return;
         }
-        auto it = s.upper_bound(target);
-        if(it == s.begin()){
-            cout<<-1<<"\n";
-            continue;
+        // c < n 
+        if ( n-2 <= c){
+            cout<<(n-1)<<"\n";
+            return;
         }
-        --it;
-        int ans = *it;
-        s.erase(it);
-        cout<<ans<<"\n";
+
+        cout<<-1<<"\n";
+        return;
     }
+    ll j = (n - c + b-1)/b +1;
+    cout<<(n - j + 1)<<"\n";
 }   
      
 int main(){
@@ -72,7 +75,8 @@ int main(){
     #endif
 
 
-
-    while(cin>>n) slv();
+    while(cin>>t) {
+        while(t--) slv();
+    }
     return 0;
 }
