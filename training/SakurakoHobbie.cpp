@@ -37,49 +37,47 @@ T minV(T a , Args... arg){
 }
 int t;
 int n;
+string s;
+int f(vi &p , vector<bool>& vis , int u){
+    int cnt = (s[u] == '0');
+    int current = p[u];
+    vis[u] = true;
+    while( current != u){
+        cnt += (s[current] == '0');
+        vis[current] = true;
+        current = p[current];
+    }
+    return cnt;
+}
+
+void g(vi& p , vi& ans , int u , int cnt){
+    ans[u] = cnt;
+    int current = p[u];
+    while(current != u){
+        ans[current] = cnt;
+        current = p[current];
+    }       
+}
 
 void slv(){
-    ll x;
-    cin>>n>>x;
-    vl a(n);
-    for(ll& i : a) cin>>i;
-    sort(all(a));
-    ll mex = a[0];
-    if ( mex != 0){
-        cout<<0<<"\n";
-        return;
+    cin>>n;
+    vi p(n);
+    for(int i = 0 ; i < n ; i++) {
+        cin>>p[i];
+        p[i]--;
     }
-    mex++;
-    map<ll,int> mp;
-    int j = n;
-    for(int i = 1 ; i < n ; i++){
-        //DBG(a[i]);
-        if(a[i] == a[i-1]){
-            mp[a[i] % x]++;
-            continue;   
+    cin>>s;
+    vector<bool> vis(n,false);
+    vi ans(n);
+    for(int i = 0 ; i < n ; i++){
+        if( vis[i]){
+            continue;
         }
-
-        if( a[i] != mex){
-            j = i;
-            break;
-        }
-
-        mex++;
-        //DBG(mex);
+        int cnt = f(p,vis,i);
+        g(p,ans,i,cnt);
     }
-    ll i = mex;
-    for(; i < n ; i++){
-        while( j < n && i >= a[j] ){
-            mp[a[j] % x]++;
-            j++;
-        }
-        if (mp[i%x] == 0){
-            cout<<i<<"\n";
-            return;
-        }
-        mp[i%x]--;
-    }
-    cout<<i<<"\n";
+    for(int& i : ans) cout<<i<<" ";
+    cout<<"\n";
 }   
      
 int main(){
