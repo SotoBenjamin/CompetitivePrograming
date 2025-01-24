@@ -36,35 +36,48 @@ T minV(T a , Args... arg){
     return min(a,b);
 }
 int n,m,k;
+ll x;
+
+
 void slv(){
-    cin>>m>>k;
-    vi a(n);
-    vi b(m);
-    for (int & i : a) cin>>i;
-    for(int &i : b) cin>>i;
+    cin>>x;
+    vpll a(n);
+    for(int i = 0 ; i < n ; i++) {
+        ll item; cin>>item;
+        a[i].fi = item;
+        a[i].se = i;
+    }
+    
     sort(all(a));
-    sort(all(b));
-    int i = n-1,j=m-1;
-    int cnt = 0 ;
-    while(i >= 0 && j >= 0){
-        if(abs(a[i]-b[j]) <= k){
-            cnt++;
-            i--;
-            j--;
-            continue;
+
+    int l = 0 , r = n-1;
+    while(l < r){
+        if (a[l].fi + a[r].fi == x){
+            ll l1 = min(a[l].se , a[r].se);
+            ll r1 = max(a[l].se , a[r].se);
+            l1++;
+            r1++;
+            cout<<l1<<" "<<r1<<"\n";
+            return;
         }
-        if ( a[i]  > b[j]){
-            i--;
+        else if(a[l].fi + a[r].fi > x){
+            r--;
         }
-        else {
-            j--;
+        else{
+            l++;
         }
     }
-    cout<<cnt<<"\n";
+    cout<<"IMPOSSIBLE"<<"\n";
 }   
      
 int main(){
-    //freopen("Apartments.in","r" ,stdin);
+
+    // #ifndef ONLINE_JUDGE
+    // freopen("input.txt","r",stdin);    
+    // freopen("output.txt","w",stdout);
+    // #endif
+
+
     while(cin>>n) slv();
     return 0;
 }
