@@ -40,34 +40,14 @@ ll x;
 
 
 void slv(){
-    cin>>x;
-    vpll a(n);
-    for(int i = 0 ; i < n ; i++) {
-        ll item; cin>>item;
-        a[i].fi = item;
-        a[i].se = i;
+    vl a(n);
+    for(auto& i : a) cin>>i;
+    ll dp[n];
+    dp[0] = a[0];
+    for(int i = 1 ; i < n ; i ++){
+        dp[i] = max(a[i], dp[i-1] + a[i]);
     }
-    
-    sort(all(a));
-
-    int l = 0 , r = n-1;
-    while(l < r){
-        if (a[l].fi + a[r].fi == x){
-            ll l1 = min(a[l].se , a[r].se);
-            ll r1 = max(a[l].se , a[r].se);
-            l1++;
-            r1++;
-            cout<<l1<<" "<<r1<<"\n";
-            return;
-        }
-        else if(a[l].fi + a[r].fi > x){
-            r--;
-        }
-        else{
-            l++;
-        }
-    }
-    cout<<"IMPOSSIBLE"<<"\n";
+    cout<<(*max_element(dp,dp+n))<<"\n";
 }   
      
 int main(){
