@@ -36,44 +36,57 @@ T minV(T a , Args... arg){
     return min(a,b);
 }
 int t;
+int n;
+
+bool isvalid(map<char,int>& f , map<char,int>& g){
+    for(auto& p : f){
+        if(p.se > g[p.fi]){
+            return false;
+        }
+    }
+    return true;
+}
 
 
 void slv(){
-    ll n,b,c;
-    cin>>n>>b>>c;
-    if ( n < c){
-        cout<<n<<"\n";
-        return;
-    }
-    if( b == 0){
-
-        if ( c >= n){
-            cout<<n<<"\n";
-            return;
+    string s; cin>>s;
+    map<char,int> f;
+    map<char,int> g;
+    for(char& c : s) f[c] = 1;
+    
+    int l = 0 , r = 0;
+    for(; r < n ; r++){
+        g[s[r]]++;
+        if(isvalid(f,g)){
+            break;
         }
-        // c < n 
-        if ( n-2 <= c){
-            cout<<(n-1)<<"\n";
-            return;
-        }
-
-        cout<<-1<<"\n";
-        return;
     }
-    ll j = (n - c + b-1)/b +1;
-    cout<<(n - j + 1)<<"\n";
-}   
-     
+    int ans = r-l+1;
+    g[s[l]]--;
+    l++;
+    while(r < n){
+        if(isvalid(f,g)){
+            ans = min(ans,r-l+1);
+            g[s[l]]--;
+            l++;
+        }
+        else{
+            r++;
+            g[s[r]]++;
+        }
+    }
+    cout<<ans<<"\n";
+}        
 int main(){
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);    
     freopen("output.txt","w",stdout);
     #endif
 
-
-    while(cin>>t) {
-        while(t--) slv();
-    }
+    
+    while(cin>>n) slv();
+    
     return 0;
 }

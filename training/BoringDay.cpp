@@ -36,44 +36,43 @@ T minV(T a , Args... arg){
     return min(a,b);
 }
 int t;
+int n;
 
 
+ll a,b;
 void slv(){
-    ll n,b,c;
-    cin>>n>>b>>c;
-    if ( n < c){
-        cout<<n<<"\n";
-        return;
-    }
-    if( b == 0){
-
-        if ( c >= n){
-            cout<<n<<"\n";
-            return;
+    cin>>n>>a>>b;
+    vl v(n);
+    for(ll& i : v) cin>>i;
+    int l = 0 , r = 0;
+    ll s = 0;
+    int ans = 0;
+    while(l < n){
+        while(r < n &&  s < a){
+            s += v[r++];
         }
-        // c < n 
-        if ( n-2 <= c){
-            cout<<(n-1)<<"\n";
-            return;
+        if( s >= a && s <= b){
+            ans++;
+            l = r;
+            s = 0;
         }
-
-        cout<<-1<<"\n";
-        return;
+        else{
+            s -= v[l];
+            l++;
+        }
     }
-    ll j = (n - c + b-1)/b +1;
-    cout<<(n - j + 1)<<"\n";
-}   
-     
+    cout<<ans<<"\n";
+}        
 int main(){
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin);    
     freopen("output.txt","w",stdout);
     #endif
 
-
-    while(cin>>t) {
-        while(t--) slv();
-    }
+    cin>>t;
+    while(t--) slv();
+    
     return 0;
 }
