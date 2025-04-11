@@ -38,14 +38,14 @@ T minV(T a , Args... arg){
 int t,n;
 const int MAX= 2e5 + 1;
 ll fact[MAX];
-
+ 
 void factorial(){
     fact[0] = 1;
     for(ll i = 1 ; i < MAX ; i++){
         fact[i] = ( fact[i-1] * i ) % cc;
     }
 }
-
+ 
 ll f(int n , vl& coins){
     ll dp[n+1];
     dp[0] = 1;
@@ -60,8 +60,8 @@ ll f(int n , vl& coins){
     }
     return dp[n];
 }
-
-
+ 
+ 
 void slv(){
     int n,k,d; cin>>n>>k>>d;
     vector<ll> coins1 , coins2;
