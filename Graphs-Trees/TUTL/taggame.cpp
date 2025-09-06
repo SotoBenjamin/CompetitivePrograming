@@ -9,6 +9,14 @@
 #define DBGS(x) cout << #x << " = " << x << ", ";
 #define all(x) x.begin() , x.end()
 using namespace std;
+
+
+/*
+ * Link:
+ * https://codeforces.com/problemset/problem/813/C
+ * 
+ * */
+
  
 typedef long long ll;
 typedef long double ld;
@@ -60,8 +68,16 @@ void slv(){
 		a.push_back(curr);
 		curr = p[curr];
 	}
-    for(int i : a) cout<<i<<" ";
-    cout<<"\n";
+	a.push_back(0);
+	reverse(all(a));
+	int l = 0 , r = sz(a) - 1;
+	ll ans = 2*(dp[x] + sz(a) - 1);
+	while( r - l >= 1){
+		ans = max(ans , (ll)  2*l + 2 * (r-l + dp[a[r]]) );
+		r--;
+		l++;
+	}
+	cout<<ans<<"\n";
 }
      
 int main(){
