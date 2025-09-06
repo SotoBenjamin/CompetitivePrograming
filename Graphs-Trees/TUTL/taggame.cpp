@@ -55,23 +55,20 @@ void slv(){
 	}
 	dfs(0);
 	int curr = x;
-	int d = 0;
+	vector<int> a;
 	while(p[curr] != curr){
-		d++;
+		a.push_back(curr);
 		curr = p[curr];
 	}
-    //dbg(x);
-	//dbg(dp[x]);
-	//dbg(d);
-	ll ans = 2*(dp[x] + d);
-	cout<<ans<<"\n";
+    for(int i : a) cout<<i<<" ";
+    cout<<"\n";
 }
      
 int main(){
     //int t = 1; //cin>>t;
     #ifndef ONLINE_JUDGE
-	freopen("input.txt","r",stdin);    
-	freopen("output.txt","w",stdout);
+	 freopen("input.txt","r",stdin);    
+	 freopen("output.txt","w",stdout);
    #endif
     while(cin>>n) {
 		for(int i = 0 ; i < n ; i++) {
