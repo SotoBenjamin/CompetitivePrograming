@@ -16,8 +16,6 @@ using namespace std;
  * https://codeforces.com/problemset/problem/813/C
  * 
  * */
-
- 
 typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pii;
@@ -72,7 +70,7 @@ void slv(){
 	reverse(all(a));
 	int l = 0 , r = sz(a) - 1;
 	ll ans = 2*(dp[x] + sz(a) - 1);
-	while( r - l >= 1){
+	while(r - l >= 1){
 		ans = max(ans , (ll)  2*l + 2 * (r-l + dp[a[r]]) );
 		r--;
 		l++;
