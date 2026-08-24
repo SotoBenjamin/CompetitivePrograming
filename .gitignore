@@ -23,7 +23,3 @@
 
 # Archivos con extensión .dSYM
 *.dSYM/
-
-# Archivos con extensión .in y .out
-*.in
-*.out
