@@ -75,8 +75,15 @@ public:
 		return set(i, v, 0, 0, sz);
 	}
 	
-	Node query(int l, int r){
-		return query(l, r, 0, 0, sz);
+	int query(int l, int r){
+		Node x =  query(l, r, 0, 0, sz);
+		int ans = 0;
+		for(int i = 1 ; i <= 40 ; i++){
+			if(x.fr[i] > 0){
+				ans++;
+			}
+		}
+		return ans;
 	}
 };
 
@@ -93,8 +100,8 @@ int main(){
 		if(type == 1){
 			int l,r; cin>>l>>r;
 			l--; r--;
-			auto nres = st.query(l,r+1);
-			cout<<nres.inv<<"\n";
+			int res = st.query(l,r+1);
+			cout<<res<<"\n";
 			continue;
 		}
 		int i,v; cin>>i>>v;
@@ -104,3 +111,4 @@ int main(){
 	
 	return 0;
 }
+
