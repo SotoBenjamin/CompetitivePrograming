@@ -1,0 +1,15 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     A
+relocations:
+  - { offset: 0x2E9EC, size: 0x8, addend: 0x0, symName: __ZStL8__ioinit, symObjAddr: 0xE4D40, symBinAddr: 0x100008228, symSize: 0x0 }
+  - { offset: 0x2F99E, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_A.cpp, symObjAddr: 0x1B40, symBinAddr: 0x100001620, symSize: 0x38 }
+  - { offset: 0x2F9B6, size: 0x8, addend: 0x0, symName: __GLOBAL__sub_I_A.cpp, symObjAddr: 0x1B40, symBinAddr: 0x100001620, symSize: 0x38 }
+  - { offset: 0x2FFDD, size: 0x8, addend: 0x0, symName: __ZNSt7__debug6vectorIiSaIiEEixEm, symObjAddr: 0x10, symBinAddr: 0x100000850, symSize: 0x1DC }
+  - { offset: 0x302D4, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0xF40, symBinAddr: 0x100001660, symSize: 0xC00 }
+  - { offset: 0x319EF, size: 0x8, addend: 0x0, symName: __ZZN11__gnu_debug16_Error_formatter5_S_atEPKcjS2_E11__formatter, symObjAddr: 0x1DD8, symBinAddr: 0x100008008, symSize: 0x0 }
+  - { offset: 0x31AB8, size: 0x8, addend: 0x0, symName: __ZNSt9__cxx199812_Vector_baseIiSaIiEED2Ev.isra.0, symObjAddr: 0x0, symBinAddr: 0x100000840, symSize: 0x10 }
+  - { offset: 0x31AD6, size: 0x8, addend: 0x0, symName: __ZNSt9__cxx199812_Vector_baseIiSaIiEED2Ev.isra.0, symObjAddr: 0x0, symBinAddr: 0x100000840, symSize: 0x10 }
+  - { offset: 0x31BD3, size: 0x8, addend: 0x0, symName: __ZN5Stree5queryEiiiii, symObjAddr: 0x1EC, symBinAddr: 0x100000A2C, symSize: 0x760 }
+  - { offset: 0x32236, size: 0x8, addend: 0x0, symName: __ZN5Stree3setEiiiii, symObjAddr: 0x94C, symBinAddr: 0x10000118C, symSize: 0x484 }
+...

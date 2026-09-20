@@ -14,7 +14,6 @@ void slv() {
         ll d1 = 0;
         if (a[i] > c[i]) d0 = a[i] - c[i];
         if (b[i] > d[i]) d1 = b[i] - d[i];
-        //cout<<d0<<" "<<d1<<"\n";
         op += d0;
         a[i] -= d0;
         if (d1 > 0) {
@@ -22,7 +21,6 @@ void slv() {
         }
     }
     cout<<op<<"\n";
-    //cout<<"............................\n";
 }
 
 int main() {
