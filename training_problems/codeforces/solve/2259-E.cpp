@@ -35,8 +35,7 @@ void slv() {
     for (int i = 0 ; i < n ; i++) {
         if (b[i] == 0) continue;
         if (b[i] == -1) continue;
-        int l = i - b[i] , r =
-            i + b[i];
+        int l = i - b[i] , r = i + b[i];
         bool ok = false;
         if (l >= 0 && ans[l]) ok = true;
         if (r <= n-1 && ans[r]) ok = true;
