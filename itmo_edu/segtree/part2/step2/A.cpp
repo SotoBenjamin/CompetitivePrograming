@@ -29,10 +29,6 @@ class Stree {
     void modify(int l, int r, ll v, int x, int lx, int rx) {
         if (r <= lx || l >= rx) return;
         if (lx >= l && rx <= r) {
-
-
-
-            
             apply(x,v);
             return;
         }
